@@ -3,22 +3,20 @@
 #ifndef SFML_PONG_BAT_H
 #define SFML_PONG_BAT_H
 
-using namespace sf;
-
 class Bat {
 private:
-    Vector2f position;
+    sf::Vector2f position;
 
-    RectangleShape batShape;
+    sf::RectangleShape batShape;
 
-    float batSpeed = .3f;
+    float batSpeed = 5.0f;
 
 public:
     Bat(float startX, float startY);
 
-    FloatRect getPosition();
+    sf::FloatRect getPosition();
 
-    RectangleShape getShape();
+    sf::RectangleShape getShape();
 
     void moveLeft();
 

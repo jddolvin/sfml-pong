@@ -7,7 +7,7 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(sfml-pong src/main.cpp)
+add_executable(sfml-pong src/main.cpp src/gfx/bat.h src/gfx/bat.cpp src/gfx/ball.cpp src/gfx/ball.h)
 target_link_libraries(sfml-pong PRIVATE sfml-graphics)
 target_compile_features(sfml-pong PRIVATE cxx_std_17)
 if (WIN32 AND BUILD_SHARED_LIBS)

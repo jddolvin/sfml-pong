@@ -1,5 +1,7 @@
 #include "bat.h"
 
+using namespace sf;
+
 Bat::Bat(float startX, float startY) {
     position.x = startX;
     position.y = startY;
