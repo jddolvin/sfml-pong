@@ -8,6 +8,8 @@ Ball::Ball(float startX, float startY) {
 
     ballShape.setRadius(5);
     ballShape.setPosition(position);
+
+    ballSound.setBuffer(ballHitBuffer);
 }
 
 FloatRect Ball::getPosition() {
@@ -24,16 +26,29 @@ float Ball::getXVelocity() {
 
 void Ball::reboundSides() {
     xVelocity = -xVelocity;
+    ballHitBuffer.loadFromFile("../src/assets/sound/wall-bump.wav");
+    ballSound.setPitch(1.0f);
+    ballSound.play();
 }
 
-void Ball::reboundBatOrTop() {
+void Ball::reboundBatOrTop(bool isBat) {
     position.y -= (yVelocity);
     yVelocity = -yVelocity;
+    if (isBat) {
+        ballHitBuffer.loadFromFile("../src/assets/sound/bat-bump.wav");
+    } else {
+        ballHitBuffer.loadFromFile("../src/assets/sound/wall-bump.wav");
+    }
+    ballSound.setPitch(1.0f);
+    ballSound.play();
 }
 
 void Ball::hitBottom(float startX, float startY) {
     position.x = startX;
     position.y = startY;
+    ballHitBuffer.loadFromFile("../src/assets/sound/bat-bump.wav");
+    ballSound.setPitch(0.2f);
+    ballSound.play();
 }
 
 void Ball::update() {

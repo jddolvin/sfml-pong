@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #ifndef SFML_PONG_BALL_H
 #define SFML_PONG_BALL_H
@@ -11,6 +12,9 @@ private:
 
     float xVelocity = 4.5f;
     float yVelocity = 4.5f;
+
+    sf::Sound ballSound;
+    sf::SoundBuffer ballHitBuffer;
 public:
     Ball(float startX, float startY);
 
@@ -22,7 +26,7 @@ public:
 
     void reboundSides();
 
-    void reboundBatOrTop();
+    void reboundBatOrTop(bool isBat);
 
     void hitBottom(float startX, float startY);
 

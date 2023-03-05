@@ -23,7 +23,7 @@ int main() {
 
     Font font;
 
-    font.loadFromFile("../src/game-over.ttf");
+    font.loadFromFile("../src/assets/font/game-over.ttf");
 
     hud.setFont(font);
     hud.setCharacterSize(75);
@@ -65,14 +65,14 @@ int main() {
             }
         }
         if (ball.getPosition().top < hud.getGlobalBounds().height * 2) {
-            ball.reboundBatOrTop();
+            ball.reboundBatOrTop(false);
             score++;
         }
         if (ball.getPosition().left < 0 || ball.getPosition().left + 10 > windowWidth) {
             ball.reboundSides();
         }
         if (ball.getPosition().intersects(bat.getPosition()) || ball.getPosition().intersects(bat.getPosition())) {
-            ball.reboundBatOrTop();
+            ball.reboundBatOrTop(true);
         }
 
         ball.update();
